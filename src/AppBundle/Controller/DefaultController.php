@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\Post;
 
 /**
  * Class DefaultController
@@ -37,5 +38,20 @@ class DefaultController extends Controller
         return $this->render('Default/hello.html.twig', [
             'name' => $name,
         ]);
+    }
+
+    /**
+     * Create new post
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function postAction(Request $request)
+    {
+        $post = new Post('Some post: ' . date('Y-m-d H:m:s'));
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($post);
+        $em->flush();
+        return new Response('Post created: ' . $post->getId());
     }
 }

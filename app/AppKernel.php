@@ -3,6 +3,7 @@
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
+use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -38,6 +39,7 @@ class AppKernel extends Kernel
         $bundles = [];
         $bundles[] = new FrameworkBundle;
         $bundles[] = new TwigBundle;
+        $bundles[] = new DoctrineBundle;
         $bundles[] = new AppBundle;
         return $bundles;
     }
