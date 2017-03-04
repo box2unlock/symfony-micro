@@ -29,7 +29,7 @@ Vagrant.configure("2") do |config|
     SHELL
 
     config.vm.provision "shell", run: "always", inline: <<-SHELL
-        cd /vagrant && bin/console server:start 0.0.0.0:80 --router router.php
+        cd /vagrant && composer install && bin/console server:start 0.0.0.0:80 --router router.php
     SHELL
 
     config.vbguest.auto_update = false
