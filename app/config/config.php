@@ -11,6 +11,12 @@ $container->loadFromExtension('framework', [
     'annotations' => [
         'enabled' => false,
     ],
+    'session' => [
+        'handler_id' => 'session.handler.native_file',
+        'name' => 'sess',
+        'cookie_lifetime' => 0,
+        'save_path' => '%kernel.cache_dir%/sessions',
+    ],
 ]);
 
 /**

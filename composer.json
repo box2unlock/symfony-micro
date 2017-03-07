@@ -12,5 +12,10 @@
         "classmap": [
             "app/AppKernel.php"
         ]
+    },
+    "autoload-dev": {
+        "files": [
+            "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
+        ]
     }
 }
