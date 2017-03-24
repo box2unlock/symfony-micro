@@ -3,6 +3,7 @@
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
+use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -24,7 +25,7 @@ class AppKernel extends Kernel
     {
         parent::__construct($environment, $debug);
         date_default_timezone_set('UTC');
-        if (in_array($this->getEnvironment(), ['dev'])) {
+        if (in_array($this->getEnvironment(), ['dev'], true)) {
             ini_set('display_errors', 1);
             ini_set('display_startup_errors', 1);
             error_reporting(-1);
@@ -40,6 +41,11 @@ class AppKernel extends Kernel
         $bundles[] = new FrameworkBundle;
         $bundles[] = new TwigBundle;
         $bundles[] = new DoctrineBundle;
+
+        if (in_array($this->getEnvironment(), ['dev'], true)) {
+            $bundles[] = new WebProfilerBundle;
+        }
+
         $bundles[] = new AppBundle;
         return $bundles;
     }
@@ -59,6 +65,7 @@ class AppKernel extends Kernel
      */
     public function configureRoutes(RouteCollectionBuilder $routes)
     {
+        $environment = $this->getEnvironment();
         $routes = require $this->getRootDir() . '/config/routes.php';
     }
 

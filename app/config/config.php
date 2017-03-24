@@ -17,6 +17,7 @@ $container->loadFromExtension('framework', [
         'cookie_lifetime' => 0,
         'save_path' => '%kernel.cache_dir%/sessions',
     ],
+    'profiler' => null,
 ]);
 
 /**
