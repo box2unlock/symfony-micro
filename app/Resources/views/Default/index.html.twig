@@ -2,7 +2,7 @@
 
 {% block body %}
     <p>
-        Symfony Micro Edition ({{ version }})<br>
-        <a href="https://github.com/box2unlock/symfony-micro" target="_blank">https://github.com/box2unlock/symfony-micro</a>
+        <a href="{{ path('hello', {name: 'stranger'}) }}">Hello</a> -
+        <a href="{{ path('post') }}">Create New Post</a>
     </p>
 {% endblock %}

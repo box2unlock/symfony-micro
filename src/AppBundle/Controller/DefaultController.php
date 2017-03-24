@@ -21,9 +21,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('Default/index.html.twig', [
-            'version' => $this->get('app.util.symfony_version')->getVersion(),
-        ]);
+        return $this->render('Default/index.html.twig');
     }
 
     /**
@@ -52,6 +50,8 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($post);
         $em->flush();
-        return new Response('Post created: ' . $post->getId());
+        return $this->render('Default/post.html.twig', [
+            'message' => 'Post created: ' . $post->getId(),
+        ]);
     }
 }

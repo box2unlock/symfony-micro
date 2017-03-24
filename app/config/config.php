@@ -25,6 +25,9 @@ $container->loadFromExtension('framework', [
  */
 $container->loadFromExtension('twig', [
     'strict_variables' => true,
+    'globals' => [
+        'symfony_version' => '@app.util.symfony_version',
+    ]
 ]);
 
 /**
